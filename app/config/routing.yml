@@ -1,0 +1,20 @@
+wb:
+    resource: "@WBBundle/Resources/config/routing.yml"
+    prefix:   /wb
+
+portal:
+    resource: "@PortalBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+shop:
+    resource: "@ShopBundle/Resources/config/routing.yml"
+    prefix:   /shop
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
