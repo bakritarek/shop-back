@@ -1,3 +1,3 @@
-wb_homepage:
-    path:     /
-    defaults: { _controller: WBBundle:Default:index }
+wb_addsystem:
+    path:     /add-system/{id}
+    defaults: { _controller: WBBundle:Default:AddSystem }
