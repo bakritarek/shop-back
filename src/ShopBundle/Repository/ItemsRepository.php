@@ -10,4 +10,52 @@ namespace ShopBundle\Repository;
  */
 class ItemsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function Group1() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('distinct(i.itemgroup1) as itemgroup')
+            ->where('i.itemgroup1 IS NOT NULL')
+            ->andWhere("i.itemgroup1 <> ''")
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function Group2() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('distinct(i.itemgroup2) as itemgroup')
+            ->addSelect('i.itemgroup1 as parent')
+            ->where('i.itemgroup2 IS NOT NULL')
+            ->andWhere("i.itemgroup2 <> ''")
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function Group3() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('distinct(i.itemgroup3) as itemgroup')
+            ->addSelect('i.itemgroup2 as parent')
+            ->where('i.itemgroup3 IS NOT NULL')
+            ->andWhere("i.itemgroup3 <> ''")
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function Group4() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('distinct(i.itemgroup4) as itemgroup')
+            ->addSelect('i.itemgroup3 as parent')
+            ->where('i.itemgroup4 IS NOT NULL')
+            ->andWhere("i.itemgroup4 <> ''")
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function Group5() {
+        $qb = $this->createQueryBuilder('i')
+            ->select('distinct(i.itemgroup5) as itemgroup')
+            ->addSelect('i.itemgroup4 as parent')
+            ->where('i.itemgroup5 IS NOT NULL')
+            ->andWhere("i.itemgroup5 <> ''")
+        ;
+        return $qb->getQuery()->getResult();
+    }
 }

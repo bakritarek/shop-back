@@ -43,16 +43,12 @@ class DiscountList
     private $discount;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="companyno", type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="discountLists")
      */
     private $companyno;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="itemno", type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Items", inversedBy="discountLists")
      */
     private $itemno;
 

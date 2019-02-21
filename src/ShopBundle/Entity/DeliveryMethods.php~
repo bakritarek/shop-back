@@ -63,6 +63,11 @@ class DeliveryMethods
      */
     private $sourceid;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Company", mappedBy="deliverymethod")
+     */
+    private $companys;
+
 
     /**
      * Get id
@@ -216,5 +221,46 @@ class DeliveryMethods
     public function getSourceid()
     {
         return $this->sourceid;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->companys = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add company
+     *
+     * @param \ShopBundle\Entity\Company $company
+     *
+     * @return DeliveryMethods
+     */
+    public function addCompany(\ShopBundle\Entity\Company $company)
+    {
+        $this->companys[] = $company;
+
+        return $this;
+    }
+
+    /**
+     * Remove company
+     *
+     * @param \ShopBundle\Entity\Company $company
+     */
+    public function removeCompany(\ShopBundle\Entity\Company $company)
+    {
+        $this->companys->removeElement($company);
+    }
+
+    /**
+     * Get companys
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompanys()
+    {
+        return $this->companys;
     }
 }

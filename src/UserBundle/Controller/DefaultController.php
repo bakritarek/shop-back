@@ -18,8 +18,8 @@ class DefaultController extends Controller
     public function LoginAction(Request $request) {
 
         header('Access-Control-Allow-Headers: *');
-        header('Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS');
-        header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods','*');
 
         $data = json_decode($request->getContent(), true);
 

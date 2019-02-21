@@ -29,9 +29,7 @@ class PriceList
     private $globalid;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="itemno", type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Items", inversedBy="priceLists")
      */
     private $itemno;
 
@@ -92,9 +90,7 @@ class PriceList
     private $pricetype;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="companyno", type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="pricelist")
      */
     private $companyno;
 
@@ -173,30 +169,6 @@ class PriceList
     public function getGlobalid()
     {
         return $this->globalid;
-    }
-
-    /**
-     * Set itemno
-     *
-     * @param string $itemno
-     *
-     * @return PriceList
-     */
-    public function setItemno($itemno)
-    {
-        $this->itemno = $itemno;
-
-        return $this;
-    }
-
-    /**
-     * Get itemno
-     *
-     * @return string
-     */
-    public function getItemno()
-    {
-        return $this->itemno;
     }
 
     /**
@@ -391,29 +363,6 @@ class PriceList
         return $this->pricetype;
     }
 
-    /**
-     * Set companyno
-     *
-     * @param string $companyno
-     *
-     * @return PriceList
-     */
-    public function setCompanyno($companyno)
-    {
-        $this->companyno = $companyno;
-
-        return $this;
-    }
-
-    /**
-     * Get companyno
-     *
-     * @return string
-     */
-    public function getCompanyno()
-    {
-        return $this->companyno;
-    }
 
     /**
      * Set importid
@@ -557,5 +506,53 @@ class PriceList
     public function getUntildate()
     {
         return $this->untildate;
+    }
+
+    /**
+     * Set companyno
+     *
+     * @param \ShopBundle\Entity\Company $companyno
+     *
+     * @return PriceList
+     */
+    public function setCompanyno(\ShopBundle\Entity\Company $companyno = null)
+    {
+        $this->companyno = $companyno;
+
+        return $this;
+    }
+
+    /**
+     * Get companyno
+     *
+     * @return \ShopBundle\Entity\Company
+     */
+    public function getCompanyno()
+    {
+        return $this->companyno;
+    }
+
+    /**
+     * Set itemno
+     *
+     * @param \ShopBundle\Entity\Items $itemno
+     *
+     * @return PriceList
+     */
+    public function setItemno(\ShopBundle\Entity\Items $itemno = null)
+    {
+        $this->itemno = $itemno;
+
+        return $this;
+    }
+
+    /**
+     * Get itemno
+     *
+     * @return \ShopBundle\Entity\Items
+     */
+    public function getItemno()
+    {
+        return $this->itemno;
     }
 }

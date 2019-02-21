@@ -36,9 +36,7 @@ class ItemStock
     private $locationid;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="itemno", type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Items", inversedBy="itemStocks")
      */
     private $itemno;
 
@@ -115,29 +113,7 @@ class ItemStock
         return $this->locationid;
     }
 
-    /**
-     * Set itemno
-     *
-     * @param string $itemno
-     *
-     * @return ItemStock
-     */
-    public function setItemno($itemno)
-    {
-        $this->itemno = $itemno;
 
-        return $this;
-    }
-
-    /**
-     * Get itemno
-     *
-     * @return string
-     */
-    public function getItemno()
-    {
-        return $this->itemno;
-    }
 
     /**
      * Set quantity
@@ -163,29 +139,7 @@ class ItemStock
         return $this->quantity;
     }
 
-    /**
-     * Set uni
-     *
-     * @param string $uni
-     *
-     * @return ItemStock
-     */
-    public function setUni($uni)
-    {
-        $this->uni = $uni;
 
-        return $this;
-    }
-
-    /**
-     * Get uni
-     *
-     * @return string
-     */
-    public function getUni()
-    {
-        return $this->uni;
-    }
 
     /**
      * Set unit
@@ -209,5 +163,29 @@ class ItemStock
     public function getUnit()
     {
         return $this->unit;
+    }
+
+    /**
+     * Set itemno
+     *
+     * @param \ShopBundle\Entity\Items $itemno
+     *
+     * @return ItemStock
+     */
+    public function setItemno(\ShopBundle\Entity\Items $itemno = null)
+    {
+        $this->itemno = $itemno;
+
+        return $this;
+    }
+
+    /**
+     * Get itemno
+     *
+     * @return \ShopBundle\Entity\Items
+     */
+    public function getItemno()
+    {
+        return $this->itemno;
     }
 }

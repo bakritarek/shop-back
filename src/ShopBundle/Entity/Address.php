@@ -36,9 +36,7 @@ class Address
     private $addressno;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="companyrefno", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="address")
      */
     private $companyrefno;
 

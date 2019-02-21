@@ -64,22 +64,35 @@ class Company
     private $discountgroup2;
 
     /**
-     * @var string
-     * @ORM\Column(name="paymentterms", type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="PaymentTerms", inversedBy="companys")
      */
     private $paymentterms;
 
     /**
-     * @var string
-     * @ORM\Column(name="deliveryterms", type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="DeliveryTerms", inversedBy="companys")
      */
     private $deliveryterms;
 
     /**
-     * @var string
-     * @ORM\Column(name="deliverymethod", type="string", nullable=true)
+     * @ORM\ManyToOne(targetEntity="DeliveryMethods", inversedBy="companys")
      */
     private $deliverymethod;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="companyrefno")
+     */
+    private $address;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DiscountList", mappedBy="companyno")
+     */
+    private $discountLists;
+
+    /**
+     * @ORM\OneToMany(targetEntity="PriceList", mappedBy="companyno")
+     */
+    private $pricelist;
+
 
 
 
@@ -91,6 +104,16 @@ class Company
     public function getId()
     {
         return $this->id;
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->address = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->discountLists = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -264,11 +287,11 @@ class Company
     /**
      * Set paymentterms
      *
-     * @param string $paymentterms
+     * @param \ShopBundle\Entity\PaymentTerms $paymentterms
      *
      * @return Company
      */
-    public function setPaymentterms($paymentterms)
+    public function setPaymentterms(\ShopBundle\Entity\PaymentTerms $paymentterms = null)
     {
         $this->paymentterms = $paymentterms;
 
@@ -278,7 +301,7 @@ class Company
     /**
      * Get paymentterms
      *
-     * @return string
+     * @return \ShopBundle\Entity\PaymentTerms
      */
     public function getPaymentterms()
     {
@@ -288,11 +311,11 @@ class Company
     /**
      * Set deliveryterms
      *
-     * @param string $deliveryterms
+     * @param \ShopBundle\Entity\DeliveryTerms $deliveryterms
      *
      * @return Company
      */
-    public function setDeliveryterms($deliveryterms)
+    public function setDeliveryterms(\ShopBundle\Entity\DeliveryTerms $deliveryterms = null)
     {
         $this->deliveryterms = $deliveryterms;
 
@@ -302,7 +325,7 @@ class Company
     /**
      * Get deliveryterms
      *
-     * @return string
+     * @return \ShopBundle\Entity\DeliveryTerms
      */
     public function getDeliveryterms()
     {
@@ -312,11 +335,11 @@ class Company
     /**
      * Set deliverymethod
      *
-     * @param string $deliverymethod
+     * @param \ShopBundle\Entity\DeliveryMethods $deliverymethod
      *
      * @return Company
      */
-    public function setDeliverymethod($deliverymethod)
+    public function setDeliverymethod(\ShopBundle\Entity\DeliveryMethods $deliverymethod = null)
     {
         $this->deliverymethod = $deliverymethod;
 
@@ -326,10 +349,112 @@ class Company
     /**
      * Get deliverymethod
      *
-     * @return string
+     * @return \ShopBundle\Entity\DeliveryMethods
      */
     public function getDeliverymethod()
     {
         return $this->deliverymethod;
+    }
+
+    /**
+     * Add address
+     *
+     * @param \ShopBundle\Entity\Address $address
+     *
+     * @return Company
+     */
+    public function addAddress(\ShopBundle\Entity\Address $address)
+    {
+        $this->address[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \ShopBundle\Entity\Address $address
+     */
+    public function removeAddress(\ShopBundle\Entity\Address $address)
+    {
+        $this->address->removeElement($address);
+    }
+
+    /**
+     * Get address
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Add discountList
+     *
+     * @param \ShopBundle\Entity\DiscountList $discountList
+     *
+     * @return Company
+     */
+    public function addDiscountList(\ShopBundle\Entity\DiscountList $discountList)
+    {
+        $this->discountLists[] = $discountList;
+
+        return $this;
+    }
+
+    /**
+     * Remove discountList
+     *
+     * @param \ShopBundle\Entity\DiscountList $discountList
+     */
+    public function removeDiscountList(\ShopBundle\Entity\DiscountList $discountList)
+    {
+        $this->discountLists->removeElement($discountList);
+    }
+
+    /**
+     * Get discountLists
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiscountLists()
+    {
+        return $this->discountLists;
+    }
+
+    /**
+     * Add pricelist
+     *
+     * @param \ShopBundle\Entity\PriceList $pricelist
+     *
+     * @return Company
+     */
+    public function addPricelist(\ShopBundle\Entity\PriceList $pricelist)
+    {
+        $this->pricelist[] = $pricelist;
+
+        return $this;
+    }
+
+    /**
+     * Remove pricelist
+     *
+     * @param \ShopBundle\Entity\PriceList $pricelist
+     */
+    public function removePricelist(\ShopBundle\Entity\PriceList $pricelist)
+    {
+        $this->pricelist->removeElement($pricelist);
+    }
+
+    /**
+     * Get pricelist
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPricelist()
+    {
+        return $this->pricelist;
     }
 }
