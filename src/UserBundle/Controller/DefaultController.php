@@ -49,6 +49,7 @@ class DefaultController extends Controller
                        $data = [
                            'id'=>$user->getId(),
                            'username' => $username,
+                           'salt' => $user->getSalt(),
                            'systemid' => $systemid,
                            'name' => $user->getUsername(),
                            'code' => 1

@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aa1d4463-a288-474c-91ef-a5592fe31bd9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ShopBundle/Service/UserDataVerification.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PortalBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/PortalBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Command/ShopSynchroDataCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Command/ShopSynchroDataCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/Address.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/Address.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/DeliveryMethods.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/DeliveryMethods.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/DeliveryTerms.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/DeliveryTerms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/DiscountList.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/DiscountList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/ItemStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/ItemStock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/Items.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/Items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/PaymentTerms.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/PaymentTerms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Entity/PriceList.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Entity/PriceList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShopBundle/Repository/ItemsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShopBundle/Repository/ItemsRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ShopSynchroDataCommand.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShopSynchroDataCommand.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ShopBundle/Command/ShopSynchroDataCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="441" column="43" selection-start-line="441" selection-start-column="43" selection-end-line="441" selection-end-column="43" />
+            <state relative-caret-position="311">
+              <caret line="39" column="80" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="80" />
               <folding>
                 <element signature="e#38#68#0#PHP" expanded="true" />
               </folding>
@@ -57,65 +44,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemsRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Repository/ItemsRepository.php">
+      <file leaf-file-name="CategoryControllerController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Controller/CategoryControllerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+            <state relative-caret-position="530">
+              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+              <folding>
+                <element signature="e#41#70#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Items.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/Items.php">
+      <file leaf-file-name="UserDataVerification.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Service/UserDataVerification.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8187">
-              <caret line="554" selection-start-line="554" selection-end-line="554" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Group1.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/Group1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1677">
-              <caret line="36" column="75" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Group5.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/Group5.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Group4.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/Group4.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Group3.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/Group3.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Group2.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/Group2.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+            <state relative-caret-position="380">
+              <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -123,8 +68,8 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+            <state relative-caret-position="-7">
+              <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -181,7 +126,6 @@
         <option value="$PROJECT_DIR$/src/ShopBundle/Entity/Company.php" />
         <option value="$PROJECT_DIR$/src/ShopBundle/Entity/PriceList.php" />
         <option value="$PROJECT_DIR$/src/PortalBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/ShopBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/ShopBundle/Repository/ItemsRepository.php" />
         <option value="$PROJECT_DIR$/src/ShopBundle/Entity/Group3.php" />
@@ -191,6 +135,9 @@
         <option value="$PROJECT_DIR$/src/ShopBundle/Entity/Group2.php" />
         <option value="$PROJECT_DIR$/src/ShopBundle/Entity/Items.php" />
         <option value="$PROJECT_DIR$/src/ShopBundle/Command/ShopSynchroDataCommand.php" />
+        <option value="$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/ShopBundle/Service/UserDataVerification.php" />
+        <option value="$PROJECT_DIR$/src/ShopBundle/Controller/CategoryControllerController.php" />
       </list>
     </option>
   </component>
@@ -339,17 +286,6 @@
             <path>
               <item name="shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -363,7 +299,7 @@
               <item name="shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="PortalBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shop" type="b2602c69:ProjectViewProjectNode" />
@@ -383,26 +319,12 @@
               <item name="shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ShopBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ShopBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ShopBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -415,112 +337,7 @@
             <path>
               <item name="shop" type="b2602c69:ProjectViewProjectNode" />
               <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="UserBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WBBundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WBBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WBBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WBBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="WBBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="Bundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="Bundle" type="462c0819:PsiDirectoryNode" />
-              <item name="SecurityBundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shop" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -540,7 +357,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -579,15 +396,16 @@
       <workItem from="1550153707144" duration="33000" />
       <workItem from="1550153746770" duration="5000" />
       <workItem from="1550153812165" duration="29364000" />
-      <workItem from="1550657664099" duration="2815000" />
+      <workItem from="1550657664099" duration="4272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50513000" />
+    <option name="totallyTimeSpent" value="51970000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -595,9 +413,9 @@
       <window_info anchor="bottom" id="File Transfer" order="7" weight="0.32983193" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2972689" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2972689" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32967034" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26800978" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26800978" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32967034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -619,14 +437,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/doctrine.yaml" />
     <entry file="file://$PROJECT_DIR$/.env" />
     <entry file="file://$PROJECT_DIR$/config/packages/routing.yaml" />
     <entry file="file://$PROJECT_DIR$/src/Controller/ShopController.php" />
@@ -644,13 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -850,27 +653,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ShopBundle/Entity/DiscountList.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="50" column="69" selection-start-line="50" selection-start-column="69" selection-end-line="50" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShopBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="45" column="21" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="45" selection-end-column="21" />
-          <folding>
-            <element signature="e#41#71#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -923,12 +709,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShopBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="626">
+          <caret line="45" column="21" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="45" selection-end-column="21" />
+          <folding>
+            <element signature="e#41#71#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ShopBundle/Command/ShopSynchroDataCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="441" column="43" selection-start-line="441" selection-start-column="43" selection-end-line="441" selection-end-column="43" />
+        <state relative-caret-position="311">
+          <caret line="39" column="80" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="80" />
           <folding>
             <element signature="e#38#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UserBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShopBundle/Service/UserDataVerification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShopBundle/Controller/CategoryControllerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding>
+            <element signature="e#41#70#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
