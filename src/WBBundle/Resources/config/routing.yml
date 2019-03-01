@@ -1,3 +1,6 @@
 wb_addsystem:
     path:     /add-system/{id}
     defaults: { _controller: WBBundle:Default:AddSystem }
+wb_get_picture:
+    path:     /get-picture/
+    defaults: { _controller: WBBundle:FTPController:getPictur }
