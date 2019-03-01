@@ -38,10 +38,7 @@ class Group2
      */
     private $itemgroups;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Items", mappedBy="gr2")
-     */
-    private $items;
+
 
 
     /**

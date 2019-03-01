@@ -430,28 +430,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         }
         $em->flush();
 
-        //Items Group
-
-        $ItemsGroups = $em->getRepository(Items::class)->findAll();
-
-        foreach ($ItemsGroups as $itemsGroup) {
-            $g1 = $em->getRepository(Group1::class)->findOneBy(['itemgroup1' =>  $itemsGroup->getItemgroup1()]);
-            $g2 = $em->getRepository(Group2::class)->findOneBy(['itemgroup2' =>  $itemsGroup->getItemgroup2()]);
-            $g3 = $em->getRepository(Group3::class)->findOneBy(['itemgroup3' =>  $itemsGroup->getItemgroup3()]);
-            $g4 = $em->getRepository(Group4::class)->findOneBy(['itemgroup4' =>  $itemsGroup->getItemgroup4()]);
-            $g5 = $em->getRepository(Group5::class)->findOneBy(['itemgroup5' =>  $itemsGroup->getItemgroup5()]);
-
-            $itemsGroup->setGr1($g1);
-            $itemsGroup->setGr2($g2);
-            $itemsGroup->setGr3($g3);
-            $itemsGroup->setGr4($g4);
-            $itemsGroup->setGr5($g5);
-
-            $em->persist($itemsGroup);
-
-        }
-        $em->flush();
-
         //ItemStock
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=itemstock&limit=99999999';
         $json = file_get_contents($url);

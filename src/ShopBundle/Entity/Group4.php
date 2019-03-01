@@ -38,10 +38,6 @@ class Group4
      */
     private $itemgroups;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Items", mappedBy="gr4")
-     */
-    private $items;
 
 
     /**

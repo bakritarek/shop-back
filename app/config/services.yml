@@ -32,6 +32,12 @@ services:
         resource: '../../src/WBBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+    ShopBundle\Controller\:
+        resource: '../../src/ShopBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:

@@ -10,4 +10,14 @@ namespace ShopBundle\Repository;
  */
 class Group2Repository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBy($parent) {
+        $qb = $this->createQueryBuilder('g2')
+            ->select('g2.itemgroup2')
+            ->where('g2.parent = :parent')
+            ->setParameter('parent', $parent)
+        ;
+
+        return $qb->getQuery()->getResult();
+
+    }
 }

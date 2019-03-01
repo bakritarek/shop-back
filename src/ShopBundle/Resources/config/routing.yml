@@ -1,3 +1,9 @@
 shop_homepage:
     path:     /
     defaults: { _controller: ShopBundle:Default:index }
+shop_category_get_all:
+    path:     /category/get_all
+    defaults: { _controller: ShopBundle:CategoryController:getAll}
+shop_category_get_g2:
+    path:     /category/get_c2/{id}
+    defaults: { _controller: ShopBundle:CategoryController:getGroupe2}

@@ -10,4 +10,13 @@ namespace ShopBundle\Repository;
  */
 class Group1Repository extends \Doctrine\ORM\EntityRepository
 {
+    public function getNames() {
+        $qb = $this->createQueryBuilder('g')
+            ->select('g.itemgroup1')
+            ->addSelect('g.id')
+
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

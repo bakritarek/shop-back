@@ -9,13 +9,14 @@
 namespace ShopBundle\Service;
 
 
+use Doctrine\ORM\EntityManager;
 use PortalBundle\Entity\UserPortal;
 
 class UserDataVerification
 {
 
-    public function VerifyUser($user, $salt) {
-        $em = $this->getContainer()->get('doctrine')->getEntityManager('portal');
+    public function VerifyUser($user, $salt, EntityManager $em) {
+
 
         $user = $em->getRepository(UserPortal::class)->findOneBy(['login' => $user]);
         if ($user) {
