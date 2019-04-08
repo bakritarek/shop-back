@@ -33,10 +33,7 @@ class Group1
      */
     private $itemgroups;
 
-    /**
-     * @ORM\OneToMany(targetEntity="ShopBundle\Entity\Items", mappedBy="gr1")
-     */
-    private $items;
+
 
 
 

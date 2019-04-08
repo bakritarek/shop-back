@@ -6,26 +6,48 @@ use altayalp\FtpClient\DirectoryFactory;
 use altayalp\FtpClient\FileFactory;
 use altayalp\FtpClient\Servers\FtpServer;
 use altayalp\FtpClient\Servers\SftpServer;
+use JMS\Serializer\SerializerBuilder;
+use PortalBundle\Entity\DeviceSettingType;
+use PortalBundle\Entity\UserPortal;
+use ShopBundle\Entity\Items;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class FTPControllerController extends Controller
 {
     public function getPicturAction() {
-        $host = 'ftp.nexti.de';
-        $user = 'ftp1112492-user733';
-        $password = 'xyTg195g!';
 
-        $server = new FtpServer($host);
-        $server->login($user, $password);
+        $emPortal = $this->getDoctrine()->getManager('portal');
 
-        $file = FileFactory::build($server);
-        $list = $file->ls('items/1000122/');
-        $file->download('items/1000122/Unbenannt_C1300ABCC11548028FCA4DF4C12B26D1.png', 'img.png');
+        header('Access-Control-Allow-Headers: *');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods','*');
 
-        $response = new JsonResponse();
+        $em = $this->getDoctrine()->getManager('sh733');
+        $item = $em->getRepository(Items::class)->findOneBy(['itemno'=>'11659801SB']);
+        $host = 'ftp.strato.com';
+        $user = 'ftp_ideal@singoli-chemie.de';
+        $password = 'singoli1';
+        $server =ftp_connect($host);
+        ftp_login($server, $user, $password);
+        $fin = '';
+        $pictures = ftp_nlist($server, 'items/'.$item->getItemno().'/');
+        try{
+            mkdir(__DIR__.'/../../../web/items/733/'.$item->getItemno(), 0777);
+        } catch (\Exception $exception) {
 
-        return $response->setData($list);
+        }
+
+        foreach ($pictures as $picture) {
+            if (strstr($picture, 'jpg')) {
+                ftp_get($server, __DIR__.'/../../../web/items/733/'.$item->getItemno().'/'.$picture, 'items/'.$item->getItemno().'/'.$picture, FTP_BINARY);
+            }
+        }
+
+
+
+        return $response = new JsonResponse($item->getItemno());
 
 
     }

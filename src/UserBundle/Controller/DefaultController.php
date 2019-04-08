@@ -4,9 +4,11 @@ namespace UserBundle\Controller;
 
 use PortalBundle\Entity\accountsystems;
 use PortalBundle\Entity\UserPortal;
+use ShopBundle\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use UserBundle\Entity\Users;
 
 class DefaultController extends Controller
 {
@@ -15,21 +17,24 @@ class DefaultController extends Controller
         return $this->render('UserBundle:Default:index.html.twig');
     }
 
-    public function LoginAction(Request $request) {
+    public function LoginAction(Request $request, $systemid) {
 
         header('Access-Control-Allow-Headers: *');
         header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods','*');
+        header('Access-Control-Allow-Methods: *');
+        header('Access-Control-Request-Headers: *');
+        header('Content-Type','*');
 
         $data = json_decode($request->getContent(), true);
+        $systemid = '733';
+        $companyNo = '25625';//$data['company_no'];
+        $password = 'Nexti2019';//$data['pswrd'];
 
-        $username = $data['login'];
-        $password = $data['pswrd'];
-        $systemid = $data['systmId'];
 
-        $em = $this->getDoctrine()->getManager('portal');
+        $emPortal = $this->getDoctrine()->getManager('portal');
+        $em = $this->getDoctrine()->getManager('sh'.$systemid);
         $emDefault = $this->getDoctrine()->getManager('default');
-        $accountsystems = $em->getRepository(accountsystems::class)->findOneBy(['id' => $systemid]);
+        $accountsystems = $emPortal->getRepository(accountsystems::class)->findOneBy(['id' => $systemid]);
 
         $data = [
             'code' => 0
@@ -37,26 +42,18 @@ class DefaultController extends Controller
 
         if ($accountsystems) {
            if ($accountsystems->getShopApp()) {
-               $user = $em->getRepository(UserPortal::class)->findOneBy(['login'=>$username,'systemid'=>$systemid]);
-               if ($user) {
-                   $salt = $user->getSalt();
-                   $password = hash('SHA256', $password.$salt);
-
-                   $test = strstr($password , $user->getPassword());
-
-                   if ($test == true)
-                   {
+               $company = $em->getRepository(Company::class)->findOneBy(['companyno' => $companyNo]);
+               if ($company) {
+                    $DBPassword = 'Nexti2019';
+                   $test = strstr($DBPassword, $password);
+                   if ($test) {
                        $data = [
-                           'id'=>$user->getId(),
-                           'username' => $username,
-                           'salt' => $user->getSalt(),
+                           'companyno'=>$companyNo,
+                           'companyname' => $company->getCompanyname(),
                            'systemid' => $systemid,
-                           'name' => $user->getUsername(),
                            'code' => 1
                        ];
                    }
-
-
                }
            }
 

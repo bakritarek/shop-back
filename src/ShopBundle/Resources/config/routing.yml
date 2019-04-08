@@ -2,8 +2,23 @@ shop_homepage:
     path:     /
     defaults: { _controller: ShopBundle:Default:index }
 shop_category_get_all:
-    path:     /category/get_all
+    path:     /category/get_all/{systemid}
     defaults: { _controller: ShopBundle:CategoryController:getAll}
 shop_category_get_g2:
     path:     /category/get_c2/{id}
     defaults: { _controller: ShopBundle:CategoryController:getGroupe2}
+shop_items_display:
+    path:     /items/display/{systemid}
+    defaults: { _controller: ShopBundle:ItemController:DisplayAll}
+shop_items_by_category:
+    path:     /items/by-category-{systemid}
+    defaults: { _controller: ShopBundle:ItemController:getItemsByCategory}
+shop_items_by_sub_category:
+    path:     /items/by-sub-category-{systemid}
+    defaults: { _controller: ShopBundle:ItemController:getItemsBySubCategory}
+shop_items_by_sub_sub_category:
+    path:     /items/by-sub-sub-category-{systemid}
+    defaults: { _controller: ShopBundle:ItemController:getItemsBySubSubCategory}
+shop_items_details:
+    path:     /items/item-detail/{id}/{systemid}
+    defaults: { _controller: ShopBundle:ItemController:ItemDetails}

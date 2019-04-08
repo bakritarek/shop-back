@@ -33,10 +33,6 @@ class Group5
      */
     private $parent;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Items", mappedBy="gr5")
-     */
-    private $items;
 
 
     /**

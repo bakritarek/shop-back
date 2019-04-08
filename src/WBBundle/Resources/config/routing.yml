@@ -4,3 +4,6 @@ wb_addsystem:
 wb_get_picture:
     path:     /get-picture/
     defaults: { _controller: WBBundle:FTPController:getPictur }
+wb_test:
+    path:     /test
+    defaults: { _controller: WBBundle:Default:Test }

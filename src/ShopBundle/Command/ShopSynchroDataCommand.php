@@ -2,6 +2,7 @@
 
 namespace ShopBundle\Command;
 
+use PortalBundle\Entity\DeviceSettingType;
 use ShopBundle\Entity\Address;
 use ShopBundle\Entity\Company;
 use ShopBundle\Entity\DeliveryMethods;
@@ -15,6 +16,7 @@ use ShopBundle\Entity\ItemDescription;
 use ShopBundle\Entity\Items;
 use ShopBundle\Entity\ItemStock;
 use ShopBundle\Entity\PaymentTerms;
+use ShopBundle\Entity\Picture;
 use ShopBundle\Entity\PriceList;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -39,6 +41,7 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine')->getEntityManager('sh733');
         $emDefault = $this->getContainer()->get('doctrine')->getEntityManager('default');
+        $emPortal = $this->getContainer()->get('doctrine')->getEntityManager('portal');
 
         $log = new Log();
         $log->setType('Synchro Data');
@@ -48,10 +51,12 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         $emDefault->persist($log);
         $emDefault->flush();
 
+        $systemid = 733;
+
         $q = $em->createQuery('delete from ShopBundle:DiscountList');
         $q->execute();
 
-        $q = $em->createQuery('delete from ShopBundle:ItemDescription');
+        $q = $em->createQuery('delete from ShopBundle:Picture');
         $q->execute();
 
         $q = $em->createQuery('delete from ShopBundle:ItemStock');
@@ -59,6 +64,14 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
 
         $q = $em->createQuery('delete from ShopBundle:PriceList');
         $q->execute();
+
+        $q = $em->createQuery('delete from ShopBundle:Items');
+        $q->execute();
+
+        $q = $em->createQuery('delete from ShopBundle:ItemDescription');
+        $q->execute();
+
+
         $q = $em->createQuery('delete from ShopBundle:Address');
         $q->execute();
 
@@ -66,6 +79,7 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         $q->execute();
 
         $q = $em->createQuery('delete from ShopBundle:DeliveryMethods');
+
         $q->execute();
 
         $q = $em->createQuery('delete from ShopBundle:DeliveryTerms');
@@ -93,27 +107,11 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         $q->execute();
 
 
-
-
-
-
         //DeliveryMethods
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=deliverymethods&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
-
         $js = json_decode($json, true);
 
-        $i= 1;
         if ($js) {
             foreach ($js as $obj) {
                 $DeliveryMethods = new DeliveryMethods();
@@ -134,17 +132,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //DeliveryTerms
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=deliveryterms&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
-
         $js = json_decode($json, true);
 
         if ($js) {
@@ -169,16 +156,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //PaymentTerms
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=paymentterms&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
 
         $js = json_decode($json, true);
 
@@ -201,17 +178,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //ItemDescription
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=itemdescription&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
-
         $js = json_decode($json, true);
 
         if ($js){
@@ -224,6 +190,7 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
                 $itemDescription->setTextgroup($obj['textgroup']);
                 $itemDescription->setType($obj['type']);
                 $itemDescription->setItemno($obj['itemno']);
+
                 $em->persist($itemDescription);
             }
         }
@@ -233,16 +200,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //Companys
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=company&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
 
         $js = json_decode($json, true);
         if ($js) {
@@ -275,16 +232,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //Address
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=address&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
 
         $js = json_decode($json, true);
 
@@ -324,16 +271,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //Items
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=items&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
 
         $js = json_decode($json, true);
 
@@ -341,7 +278,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
             foreach ($js as $obj) {
 
                 $item = new Items();
-
 
                 $item->setText1($obj['text1']);
                 $item->setHaspermission($obj['haspermission']);
@@ -354,12 +290,15 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
                 $item->setItemgroup4($obj['itemgroup4']);
                 $item->setItemgroup5($obj['itemgroup5']);
                 $item->setVattype($obj['vattype']);
+                $item->setEan($obj['ean']);
 
                 $itemDescription = $em->getRepository(ItemDescription::class)->findOneBy(['itemno'=>$obj['itemno']]);
 
                 $item->setItemdescription($itemDescription);
 
                 $em->persist($item);
+
+
             }
         }
         $em->flush();
@@ -433,16 +372,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //ItemStock
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=itemstock&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
 
         $js = json_decode($json, true);
 
@@ -470,17 +399,6 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
         //PriceList
         $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=pricelist&limit=99999999';
         $json = file_get_contents($url);
-        $json = '['.$json.']';
-        $words = ['\n','\t','\r'];
-        $json = str_replace($words,' ',$json);
-        $json = str_replace('null','""',$json);
-        $json = str_replace('}','},',$json);
-        $length = strlen($json) -2;
-        $json = substr($json,0, $length);
-
-
-        $json = $json.']';
-
         $js = json_decode($json, true);
 
         if ($js){
@@ -488,19 +406,43 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
 
                 $priceList = new PriceList();
 
-                $priceList->setUnit($obj['unit']);
+                $unit = $obj['unit'];
+                if ($unit === '""')
+                    $unit = null;
+                $price = $obj['price'];
+                if ($price === '""')
+                    $price = null;
+                $base = $obj['base'];
+                if ($base === '""')
+                    $base = null;
+                $base = $obj['base'];
+                if ($base === '""')
+                    $base = null;
+                $limitdown = $obj['limitdown'];
+                if ($limitdown === '""')
+                    $limitdown = null;
+                $pricetype = $obj['pricetype'];
+                if ($pricetype === '""')
+                    $pricetype = null;
+                $discountable = $obj['discountable'];
+                if ($discountable === '""')
+                    $discountable = null;
+                $miniprice = $obj['minprice'];
+                if ($miniprice === '""')
+                    $miniprice = null;
+                $priceList->setUnit($unit);
                 $priceList->setGlobalid($obj['globalid']);
-                $priceList->setBase($obj['base']);
+                $priceList->setBase($base);
                 $priceList->setCurrency($obj['currency']);
-                $priceList->setDiscountable($obj['discountable']);
-                $priceList->setFromdate($obj['fromdate']);
+                $priceList->setDiscountable($discountable);
+                $priceList->setFromdate(new \DateTime($obj['fromdate']));
                 $priceList->setGroup1($obj['group1']);
                 $priceList->setGroup2($obj['group2']);
-                $priceList->setLimitdown($obj['limitdown']);
-                $priceList->setMinprice($obj['minprice']);
-                $priceList->setPrice($obj['price']);
-                $priceList->setPricetype($obj['pricetype']);
-                $priceList->setUntildate($obj['untildate']);
+                $priceList->setLimitdown($limitdown);
+                $priceList->setMinprice($miniprice);
+                $priceList->setPrice($price);
+                $priceList->setPricetype($pricetype);
+                $priceList->setUntildate(new \DateTime($obj['untildate']));
 
                 $item = $em->getRepository(Items::class)->findOneBy(['itemno' => $obj['itemno']]);
                 $company = $em->getRepository(Company::class)->findOneBy(['companyno' => $obj['companyno']]);
@@ -508,7 +450,7 @@ class ShopSynchroDataCommand extends ContainerAwareCommand
                 $priceList->setCompanyno($company);
                 $priceList->setItemno($item);
 
-                $em->persist($itemStock);
+                $em->persist($priceList);
             }
         }
         $em->flush();

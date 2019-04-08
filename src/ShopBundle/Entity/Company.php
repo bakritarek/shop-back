@@ -95,7 +95,6 @@ class Company
 
 
 
-
     /**
      * Get id
      *
@@ -457,4 +456,5 @@ class Company
     {
         return $this->pricelist;
     }
+
 }

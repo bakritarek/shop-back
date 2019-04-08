@@ -118,31 +118,25 @@ class Items
      */
     private $discountLists;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ShopBundle\Entity\Picture", mappedBy="item")
+     */
+    private $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ShopBundle\Entity\Group1", inversedBy="items")
+     * @var string
+     *
+     * @ORM\Column(name="ean", type="string", length=255, nullable=true)
      */
-    private $gr1;
+    private $ean;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ShopBundle\Entity\Group2", inversedBy="items")
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
-    private $gr2;
+    private $photo;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="ShopBundle\Entity\Group3", inversedBy="items")
-     */
-    private $gr3;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ShopBundle\Entity\Group4", inversedBy="items")
-     */
-    private $gr4;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ShopBundle\Entity\Group5", inversedBy="items")
-     */
-    private $gr5;
 
     /**
      * Get id
@@ -555,122 +549,84 @@ class Items
 
 
     /**
-     * Set gr1
+     * Add picture
      *
-     * @param \ShopBundle\Entity\Group1 $gr1
+     * @param \ShopBundle\Entity\Picture $picture
      *
      * @return Items
      */
-    public function setGr1(\ShopBundle\Entity\Group1 $gr1 = null)
+    public function addPicture(\ShopBundle\Entity\Picture $picture)
     {
-        $this->gr1 = $gr1;
+        $this->pictures[] = $picture;
 
         return $this;
     }
 
     /**
-     * Get gr1
+     * Remove picture
      *
-     * @return \ShopBundle\Entity\Group1
+     * @param \ShopBundle\Entity\Picture $picture
      */
-    public function getGr1()
+    public function removePicture(\ShopBundle\Entity\Picture $picture)
     {
-        return $this->gr1;
+        $this->pictures->removeElement($picture);
     }
 
     /**
-     * Set gr2
+     * Get pictures
      *
-     * @param \ShopBundle\Entity\Group2 $gr2
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * Set ean
+     *
+     * @param string $ean
      *
      * @return Items
      */
-    public function setGr2(\ShopBundle\Entity\Group2 $gr2 = null)
+    public function setEan($ean)
     {
-        $this->gr2 = $gr2;
+        $this->ean = $ean;
 
         return $this;
     }
 
     /**
-     * Get gr2
+     * Get ean
      *
-     * @return \ShopBundle\Entity\Group2
+     * @return string
      */
-    public function getGr2()
+    public function getEan()
     {
-        return $this->gr2;
+        return $this->ean;
     }
 
     /**
-     * Set gr3
+     * Set photo
      *
-     * @param \ShopBundle\Entity\Group3 $gr3
+     * @param string $photo
      *
      * @return Items
      */
-    public function setGr3(\ShopBundle\Entity\Group3 $gr3 = null)
+    public function setPhoto($photo)
     {
-        $this->gr3 = $gr3;
+        $this->photo = $photo;
 
         return $this;
     }
 
     /**
-     * Get gr3
+     * Get photo
      *
-     * @return \ShopBundle\Entity\Group3
+     * @return string
      */
-    public function getGr3()
+    public function getPhoto()
     {
-        return $this->gr3;
-    }
-
-    /**
-     * Set gr4
-     *
-     * @param \ShopBundle\Entity\Group4 $gr4
-     *
-     * @return Items
-     */
-    public function setGr4(\ShopBundle\Entity\Group4 $gr4 = null)
-    {
-        $this->gr4 = $gr4;
-
-        return $this;
-    }
-
-    /**
-     * Get gr4
-     *
-     * @return \ShopBundle\Entity\Group4
-     */
-    public function getGr4()
-    {
-        return $this->gr4;
-    }
-
-    /**
-     * Set gr5
-     *
-     * @param \ShopBundle\Entity\Group5 $gr5
-     *
-     * @return Items
-     */
-    public function setGr5(\ShopBundle\Entity\Group5 $gr5 = null)
-    {
-        $this->gr5 = $gr5;
-
-        return $this;
-    }
-
-    /**
-     * Get gr5
-     *
-     * @return \ShopBundle\Entity\Group5
-     */
-    public function getGr5()
-    {
-        return $this->gr5;
+        return $this->photo;
     }
 }

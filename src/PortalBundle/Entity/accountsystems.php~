@@ -40,4 +40,28 @@ class accountsystems
     }
 
 
+
+    /**
+     * Set shopApp
+     *
+     * @param boolean $shopApp
+     *
+     * @return accountsystems
+     */
+    public function setShopApp($shopApp)
+    {
+        $this->shopApp = $shopApp;
+
+        return $this;
+    }
+
+    /**
+     * Get shopApp
+     *
+     * @return boolean
+     */
+    public function getShopApp()
+    {
+        return $this->shopApp;
+    }
 }

@@ -58,4 +58,81 @@ class ItemsRepository extends \Doctrine\ORM\EntityRepository
         ;
         return $qb->getQuery()->getResult();
     }
+
+    public function getAllItems($companyno) {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i.id as id')
+            ->addSelect('i.text1 as text1')
+            ->addSelect('i.text2 as text2')
+            ->addSelect('i.itemno as itemno')
+            ->addSelect('i.photo')
+            ->addSelect('i.itemgroup1')
+            ->orderBy('i.itemno', 'DESC')
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getByCategory($category) {
+
+        $qb = $this->createQueryBuilder('i')
+            ->select('i.id as id')
+            ->addSelect('i.text1 as text1')
+            ->addSelect('i.text2 as text2')
+            ->addSelect('i.itemno as itemno')
+
+            ->where('i.itemgroup1 = :category')
+            ->setParameter('category',$category)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getBySubCategory($parent, $cat2) {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i.id as id')
+            ->addSelect('i.text1 as text1')
+            ->addSelect('i.text2 as text2')
+            ->addSelect('i.itemno as itemno')
+
+            ->where('i.itemgroup1 = :parent')
+            ->andWhere('i.itemgroup2 = :category')
+            ->setParameter('category',$cat2)
+            ->setParameter('parent',$parent)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getBySubSubCategory($grandparent, $parent, $cat2) {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i.id as id')
+            ->addSelect('i.text1 as text1')
+            ->addSelect('i.text2 as text2')
+            ->addSelect('i.itemno as itemno')
+
+            ->where('i.itemgroup1 = :grandparent')
+            ->andWhere('i.itemgroup2 = :parent')
+            ->andWhere('i.itemgroup3 = :category')
+            ->setParameter('category',$cat2)
+            ->setParameter('parent',$parent)
+            ->setParameter('grandparent',$grandparent)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getOneItem($id) {
+        $qb = $this->createQueryBuilder('i')
+            ->select('i.photo', 'p')
+            ->addSelect('i.text1')
+            ->addSelect('i.text2')
+            ->addSelect('i.id')
+            ->addSelect('i.itemno')
+            ->join('i.pictures', 'p', 'p.item = i')
+            ->addSelect('i.ean')
+            ->leftJoin('i.itemdescription', 'it')
+            ->addSelect('it.text')
+            ->where('i.id = :id')
+            ->setParameter('id', $id)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

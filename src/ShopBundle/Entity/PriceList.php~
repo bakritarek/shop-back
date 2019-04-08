@@ -85,7 +85,7 @@ class PriceList
     /**
      * @var int
      *
-     * @ORM\Column(name="pricetype", type="integer", nullable=true)
+     * @ORM\Column(name="pricetype", type="text", nullable=true)
      */
     private $pricetype;
 
@@ -118,7 +118,7 @@ class PriceList
     /**
      * @var float
      *
-     * @ORM\Column(name="minprice", type="float", nullable=true)
+     * @ORM\Column(name="minprice", type="text", nullable=true)
      */
     private $minprice;
 
@@ -339,29 +339,6 @@ class PriceList
         return $this->limitdown;
     }
 
-    /**
-     * Set pricetype
-     *
-     * @param integer $pricetype
-     *
-     * @return PriceList
-     */
-    public function setPricetype($pricetype)
-    {
-        $this->pricetype = $pricetype;
-
-        return $this;
-    }
-
-    /**
-     * Get pricetype
-     *
-     * @return int
-     */
-    public function getPricetype()
-    {
-        return $this->pricetype;
-    }
 
 
     /**
@@ -436,29 +413,7 @@ class PriceList
         return $this->discountable;
     }
 
-    /**
-     * Set minprice
-     *
-     * @param float $minprice
-     *
-     * @return PriceList
-     */
-    public function setMinprice($minprice)
-    {
-        $this->minprice = $minprice;
 
-        return $this;
-    }
-
-    /**
-     * Get minprice
-     *
-     * @return float
-     */
-    public function getMinprice()
-    {
-        return $this->minprice;
-    }
 
     /**
      * Set fromdate
@@ -554,5 +509,53 @@ class PriceList
     public function getItemno()
     {
         return $this->itemno;
+    }
+
+    /**
+     * Set pricetype
+     *
+     * @param string $pricetype
+     *
+     * @return PriceList
+     */
+    public function setPricetype($pricetype)
+    {
+        $this->pricetype = $pricetype;
+
+        return $this;
+    }
+
+    /**
+     * Get pricetype
+     *
+     * @return string
+     */
+    public function getPricetype()
+    {
+        return $this->pricetype;
+    }
+
+    /**
+     * Set minprice
+     *
+     * @param string $minprice
+     *
+     * @return PriceList
+     */
+    public function setMinprice($minprice)
+    {
+        $this->minprice = $minprice;
+
+        return $this;
+    }
+
+    /**
+     * Get minprice
+     *
+     * @return string
+     */
+    public function getMinprice()
+    {
+        return $this->minprice;
     }
 }

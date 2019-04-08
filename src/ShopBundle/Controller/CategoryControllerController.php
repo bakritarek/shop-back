@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CategoryControllerController extends Controller
 {
-    public function getAllAction(Request $request) {
+    public function getAllAction(Request $request, $systemid) {
 
         header('Access-Control-Allow-Headers: *');
         header('Access-Control-Allow-Origin: *');
@@ -22,23 +22,11 @@ class CategoryControllerController extends Controller
 
         $data = json_decode($request->getContent(), true);
 
+        $em = $this->getDoctrine()->getManager('sh'.$systemid);
+        $categorys = $em->getRepository(Group1::class)->findBy([], ['itemgroup1'=>'ASC']);
+        $serializer = SerializerBuilder::create()->build();
+        $jsonObject = $serializer->serialize($categorys, 'json');
 
-        $response = new JsonResponse();
-        $username = $data['user'];
-        $systemid = $data['systemid'];
-        $salt = $data['salt'];
-        $jsonObject = 'no data';
-        $emPortal = $this->getDoctrine()->getManager('portal');
-        $em = $this->getDoctrine()->getManager('sh733');
-        $user = $emPortal->getRepository(UserPortal::class)->findOneBy(['login'=>$username,'systemid'=>$systemid]);
-        if ($user) {
-            $rSalt = $user->getSalt();
-            if ($rSalt === $salt) {
-                $categorys = $em->getRepository(Group1::class)->findAll();
-                $serializer = SerializerBuilder::create()->build();
-                $jsonObject = $serializer->serialize($categorys, 'json');
-            }
-        }
 
 
         return $response = new Response($jsonObject);
@@ -55,23 +43,15 @@ class CategoryControllerController extends Controller
 
 
         $response = new JsonResponse();
-        $username = $data['user'];
-        $systemid = $data['systemid'];
+        $systemid = $id;
         $salt = $data['salt'];
         $jsonObject = 'no data';
-        $cv = 0;
         $emPortal = $this->getDoctrine()->getManager('portal');
         $em = $this->getDoctrine()->getManager('sh733');
-        $user = $emPortal->getRepository(UserPortal::class)->findOneBy(['login'=>$username,'systemid'=>$systemid]);
-        if ($user) {
-            $rSalt = $user->getSalt();
-            if ($rSalt === $salt) {
-                $parent = $em->getRepository(Group1::class)->find($id);
-                $categorys = $em->getRepository(Group2::class)->getBy($parent);
-                $serializer = SerializerBuilder::create()->build();
-                $jsonObject = $serializer->serialize($categorys, 'json');
-            }
-        }
+        $parent = $em->getRepository(Group1::class)->find($id);
+        $categorys = $em->getRepository(Group2::class)->getBy($parent);
+        $serializer = SerializerBuilder::create()->build();
+        $jsonObject = $serializer->serialize($categorys, 'json');
 
 
         return $response = new Response($jsonObject);

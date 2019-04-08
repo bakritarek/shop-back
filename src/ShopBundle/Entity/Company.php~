@@ -93,7 +93,10 @@ class Company
      */
     private $pricelist;
 
-
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Users", cascade={"persist", "remove"})
+     */
+    private $password;
 
 
     /**
@@ -456,5 +459,29 @@ class Company
     public function getPricelist()
     {
         return $this->pricelist;
+    }
+
+    /**
+     * Set password
+     *
+     * @param \UserBundle\Entity\Users $password
+     *
+     * @return Company
+     */
+    public function setPassword(\UserBundle\Entity\Users $password = null)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return \UserBundle\Entity\Users
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

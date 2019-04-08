@@ -2,5 +2,5 @@ user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Default:index }
 user_login:
-    path:     /login
+    path:     /login/{systemid}
     defaults: { _controller: UserBundle:Default:Login }

@@ -118,6 +118,24 @@ class Items
      */
     private $discountLists;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ShopBundle\Entity\Picture", mappedBy="item")
+     */
+    private $pictures;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ean", type="string", length=255, nullable=true)
+     */
+    private $ean;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     */
+    private $photo;
 
 
     /**
@@ -529,4 +547,86 @@ class Items
         return $this->itemgroup5;
     }
 
+
+    /**
+     * Add picture
+     *
+     * @param \ShopBundle\Entity\Picture $picture
+     *
+     * @return Items
+     */
+    public function addPicture(\ShopBundle\Entity\Picture $picture)
+    {
+        $this->pictures[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \ShopBundle\Entity\Picture $picture
+     */
+    public function removePicture(\ShopBundle\Entity\Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * Set ean
+     *
+     * @param string $ean
+     *
+     * @return Items
+     */
+    public function setEan($ean)
+    {
+        $this->ean = $ean;
+
+        return $this;
+    }
+
+    /**
+     * Get ean
+     *
+     * @return string
+     */
+    public function getEan()
+    {
+        return $this->ean;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Items
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
 }

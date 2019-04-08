@@ -2,8 +2,10 @@
 
 namespace WBBundle\Controller;
 
+use ShopBundle\Entity\ItemDescription;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Yaml;
 use WBBundle\Entity\App;
@@ -112,6 +114,33 @@ class DefaultController extends Controller
         $response = new JsonResponse();
 
         return $response->setData([$responses]);
+
+    }
+
+    public function TestAction() {
+
+        $em = $this->getDoctrine()->getManager('sh733');
+        //ItemDescription
+        $url = 'http://192.168.100.138:8090/Service/Replicator/GetDataDump?Instance=default&DeviceID=TESTUDID&Raw=true&format=json&DeviceVersion=1&Device=iphone&table=itemdescription&limit=99999999';
+        $json = file_get_contents($url);
+
+
+
+        $js = json_decode($json, true);
+        foreach ($js as $obj) {
+            $itemDescription = new ItemDescription();
+
+            $itemDescription->setGlobalid($obj['globalid']);
+            $itemDescription->setText($obj['text']);
+            $itemDescription->setSortorder($obj['sortorder']);
+            $itemDescription->setTextgroup($obj['textgroup']);
+            $itemDescription->setType($obj['type']);
+            $itemDescription->setItemno($obj['itemno']);
+
+            $em->persist($itemDescription);
+        }
+       return $response = new JsonResponse($js);
+
 
     }
 }
